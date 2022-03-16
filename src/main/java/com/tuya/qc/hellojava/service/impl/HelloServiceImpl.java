@@ -5,8 +5,8 @@ import com.tuya.qc.hellojava.service.HelloService;
 import org.springframework.stereotype.Service;
 
 /**
- * @Author: my.deng@tuya.com
- * @Date: 2022/3/15 15:36
+ * Author: my.deng@tuya.com
+ * Date: 2022/3/15 15:36
  */
 @Service
 public class HelloServiceImpl implements HelloService {

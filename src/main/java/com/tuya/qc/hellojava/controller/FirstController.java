@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @Author: my.deng@tuya.com
- * @Date: 2022/3/15 15:29
+ * Author: my.deng@tuya.com
+ * Date: 2022/3/15 15:29
  */
 
 @RestController
