@@ -1,4 +1,4 @@
-package com.tuya.qc.hellojava.control;
+package com.tuya.qc.hellojava.controller;
 
 import com.tuya.qc.hellojava.dto.PersonDto;
 import com.tuya.qc.hellojava.service.HelloService;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-public class FirstControl {
+public class FirstController {
     @Autowired
     HelloService helloService;
 
