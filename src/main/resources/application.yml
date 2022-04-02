@@ -1,0 +1,6 @@
+server:
+  port: 12345
+
+lesson:
+  count: 20
+  name: meiyo
