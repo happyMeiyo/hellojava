@@ -64,7 +64,7 @@
   <select id="pageList" resultMap="BaseResultMap">
     SELECT <include refid="Base_Column_List" />
     FROM film_actor
-    LIMIT #{offset}, #{pageSize}
+    LIMIT #{offset}, #{pagesize}
   </select>
 
   <select id="pageListCount" resultType="java.lang.Integer">
