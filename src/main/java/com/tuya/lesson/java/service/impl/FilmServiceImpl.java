@@ -1,6 +1,6 @@
 package com.tuya.lesson.java.service.impl;
 
-import com.tuya.lesson.java.dao.FilmDao;
+import com.tuya.lesson.java.dao.FilmMapper;
 import com.tuya.lesson.java.entity.Film;
 import com.tuya.lesson.java.service.FilmService;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class FilmServiceImpl implements FilmService {
 
     @Resource
-    private FilmDao filmMapper;
+    private FilmMapper filmMapper;
 
     @Override
     public Map<String, Object> filmList(int offset, int pageSize) {

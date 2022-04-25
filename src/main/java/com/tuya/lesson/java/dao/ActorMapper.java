@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Mapper
 @Repository
-public interface ActorDao {
+public interface ActorMapper {
     int deleteByPrimaryKey(Short actorId);
 
     int insert(Actor record);

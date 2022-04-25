@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuya.lesson.java.dao.FilmActorMapper">
+
+  <resultMap id="BaseResultMap" type="com.tuya.lesson.java.entity.FilmActor" >
+    <result column="actor_id" property="actorId" />
+    <result column="film_id" property="filmId" />
+    <result column="last_update" property="lastUpdate" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    actor_id, film_id, last_update
+  </sql>
+
+  <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.tuya.lesson.java.entity.FilmActor">
+    INSERT INTO film_actor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="null != actorId and '' != actorId">
+        actor_id,
+      </if>
+      <if test="null != filmId and '' != filmId">
+        film_id,
+      </if>
+      <if test="null != lastUpdate and '' != lastUpdate">
+        last_update
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="null != actorId and '' != actorId">
+        #{actorId},
+      </if>
+      <if test="null != filmId and '' != filmId">
+        #{filmId},
+      </if>
+      <if test="null != lastUpdate and '' != lastUpdate">
+        #{lastUpdate}
+      </if>
+    </trim>
+  </insert>
+
+  <delete id="delete" >
+    DELETE FROM film_actor
+    WHERE id = #{id}
+  </delete>
+
+  <update id="update" parameterType="com.tuya.lesson.java.entity.FilmActor">
+    UPDATE film_actor
+    <set>
+      <if test="null != actorId and '' != actorId">actor_id = #{actorId},</if>
+      <if test="null != filmId and '' != filmId">film_id = #{filmId},</if>
+      <if test="null != lastUpdate and '' != lastUpdate">last_update = #{lastUpdate}</if>
+    </set>
+    WHERE id = #{id}
+  </update>
+
+
+  <select id="load" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    FROM film_actor
+    WHERE id = #{id}
+  </select>
+
+  <select id="pageList" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    FROM film_actor
+    LIMIT #{offset}, #{pageSize}
+  </select>
+
+  <select id="pageListCount" resultType="java.lang.Integer">
+    SELECT count(1)
+    FROM film_actor
+  </select>
+
+</mapper>

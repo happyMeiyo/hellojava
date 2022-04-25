@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface FilmDao {
+public interface FilmMapper {
     int deleteByPrimaryKey(Short filmId);
 
     int insert(Film record);

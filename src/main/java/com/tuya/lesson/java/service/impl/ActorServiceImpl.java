@@ -1,6 +1,6 @@
 package com.tuya.lesson.java.service.impl;
 
-import com.tuya.lesson.java.dao.ActorDao;
+import com.tuya.lesson.java.dao.ActorMapper;
 import com.tuya.lesson.java.entity.Actor;
 import com.tuya.lesson.java.service.ActorService;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 public class ActorServiceImpl implements ActorService {
 
     @Resource
-    private ActorDao actorMapper;
+    private ActorMapper actorMapper;
 
 
     @Override
