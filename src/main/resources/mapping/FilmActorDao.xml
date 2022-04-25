@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuya.lesson.java.dao.FilmActorDao">
+  <resultMap id="BaseResultMap" type="com.tuya.lesson.java.entity.FilmActor">
+    <id column="actor_id" jdbcType="SMALLINT" property="actorId" />
+    <id column="film_id" jdbcType="SMALLINT" property="filmId" />
+    <result column="last_update" jdbcType="TIMESTAMP" property="lastUpdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    actor_id, film_id, last_update
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.tuya.lesson.java.entity.FilmActorKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from film_actor
+    where actor_id = #{actorId,jdbcType=SMALLINT}
+      and film_id = #{filmId,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.tuya.lesson.java.entity.FilmActorKey">
+    delete from film_actor
+    where actor_id = #{actorId,jdbcType=SMALLINT}
+      and film_id = #{filmId,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" keyColumn="actor_id" keyProperty="actorId" parameterType="com.tuya.lesson.java.entity.FilmActor" useGeneratedKeys="true">
+    insert into film_actor (film_id, last_update)
+    values (#{filmId,jdbcType=SMALLINT}, #{lastUpdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="actor_id" keyProperty="actorId" parameterType="com.tuya.lesson.java.entity.FilmActor" useGeneratedKeys="true">
+    insert into film_actor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="filmId != null">
+        film_id,
+      </if>
+      <if test="lastUpdate != null">
+        last_update,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="filmId != null">
+        #{filmId,jdbcType=SMALLINT},
+      </if>
+      <if test="lastUpdate != null">
+        #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tuya.lesson.java.entity.FilmActor">
+    update film_actor
+    <set>
+      <if test="lastUpdate != null">
+        last_update = #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where actor_id = #{actorId,jdbcType=SMALLINT}
+      and film_id = #{filmId,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tuya.lesson.java.entity.FilmActor">
+    update film_actor
+    set last_update = #{lastUpdate,jdbcType=TIMESTAMP}
+    where actor_id = #{actorId,jdbcType=SMALLINT}
+      and film_id = #{filmId,jdbcType=SMALLINT}
+  </update>
+</mapper>
