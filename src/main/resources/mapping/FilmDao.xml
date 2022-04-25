@@ -27,6 +27,18 @@
     from film
     where film_id = #{filmId,jdbcType=SMALLINT}
   </select>
+
+  <select id="filmList" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List" />
+    FROM film
+    LIMIT #{offset}, #{pageSize}
+  </select>
+
+  <select id="filmCount" resultType="java.lang.Integer">
+    SELECT count(1)
+    FROM film
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
     delete from film
     where film_id = #{filmId,jdbcType=SMALLINT}
