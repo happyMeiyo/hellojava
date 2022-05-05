@@ -4,9 +4,13 @@ import com.tuya.lesson.java.entity.Actor;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface ActorMapper {
+    List<Actor> queryActors(String firstName, String lastName);
+
     int deleteByPrimaryKey(Short actorId);
 
     int insert(Actor record);
@@ -18,4 +22,8 @@ public interface ActorMapper {
     int updateByPrimaryKeySelective(Actor record);
 
     int updateByPrimaryKey(Actor record);
+
+    List<Actor> queryActorsByPage(String firstName, String lastName, int pageNum, int pageSize);
+
+    int queryCountForActors(String firstName, String lastName);
 }

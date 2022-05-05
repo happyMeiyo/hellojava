@@ -1,5 +1,9 @@
 package com.tuya.lesson.java.util;
 
+import com.tuya.lesson.java.entity.Actor;
+
+import java.util.List;
+
 /**
  * Author: my.deng@tuya.com
  * Date: 2022/4/25 19:34
@@ -39,7 +43,8 @@ public class ReturnT<T> {
         return t;
     }
 
-    public void setT(T t) {
+    public ReturnT setT(T t) {
         this.t = t;
+        return this;
     }
 }

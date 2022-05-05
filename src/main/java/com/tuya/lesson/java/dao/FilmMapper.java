@@ -34,4 +34,6 @@ public interface FilmMapper {
      * @date 2022/03/29
      **/
     int filmCount();
+
+    List<Film> queryFilmsByActorId(int actorId);
 }
