@@ -10,6 +10,7 @@ import lombok.Data;
 @Data
 public class QueryFilmDto {
     private int actorId;
+    private int filmId;
 
     int pageNum;
 

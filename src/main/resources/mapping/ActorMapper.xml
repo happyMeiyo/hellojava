@@ -49,6 +49,12 @@
             and last_name like "%"#{lastName}"%"
         </if>
     </select>
+    <select id="queryActorsByFilmId" resultMap="BaseResultMap">
+        SELECT actor.*
+        FROM actor, film_actor
+        where actor.actor_id = film_actor.actor_id and film_actor.film_id = #{filmId}
+
+    </select>
 
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">

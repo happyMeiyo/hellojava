@@ -1,7 +1,12 @@
 package com.tuya.lesson.java.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.tuya.lesson.java.dao.ActorMapper;
+import com.tuya.lesson.java.dto.QueryFilmDto;
 import com.tuya.lesson.java.entity.Actor;
+import com.tuya.lesson.java.entity.Film;
 import com.tuya.lesson.java.service.ActorService;
 import com.tuya.lesson.java.util.ReturnT;
 import com.tuya.lesson.java.dto.QueryActorDto;
@@ -52,5 +57,13 @@ public class ActorServiceImpl implements ActorService {
         queryActorVo.setPageSize(queryActorDto.getPageSize());
 
         return ReturnT.success().setT(queryActorVo);
+    }
+
+    @Override
+    public ReturnT<PageInfo<Film>> queryActorsByFilmId(QueryFilmDto queryFilmDto) {
+        Page<Actor> objects = PageHelper.startPage(queryFilmDto.getPageNum(), queryFilmDto.getPageSize());
+            List<Film> films = actorMapper.queryActorsByFilmId(queryFilmDto.getFilmId());
+
+        return ReturnT.success().setT(objects.toPageInfo());
     }
 }

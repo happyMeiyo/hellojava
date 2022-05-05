@@ -11,6 +11,7 @@ import lombok.Data;
 public class QueryActorDto {
     private String firstName;
     private String lastName;
+    private int actorId;
 
     int pageNum;
     int pageSize;

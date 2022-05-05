@@ -1,6 +1,9 @@
 package com.tuya.lesson.java.service;
 
+import com.github.pagehelper.PageInfo;
+import com.tuya.lesson.java.dto.QueryFilmDto;
 import com.tuya.lesson.java.entity.Actor;
+import com.tuya.lesson.java.entity.Film;
 import com.tuya.lesson.java.util.ReturnT;
 import com.tuya.lesson.java.dto.QueryActorDto;
 import com.tuya.lesson.java.dto.QueryActorVo;
@@ -22,4 +25,6 @@ public interface ActorService {
     ReturnT<List<Actor>> queryActorList(QueryActorDto queryActorDto);
 
     ReturnT<QueryActorVo>  queryActorByPage(QueryActorDto queryActorDto);
+
+    ReturnT<PageInfo<Film>> queryActorsByFilmId(QueryFilmDto queryFilmDto);
 }

@@ -1,6 +1,9 @@
 package com.tuya.lesson.java.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.tuya.lesson.java.dto.QueryFilmDto;
 import com.tuya.lesson.java.entity.Actor;
+import com.tuya.lesson.java.entity.Film;
 import com.tuya.lesson.java.service.ActorService;
 import com.tuya.lesson.java.util.ReturnT;
 import com.tuya.lesson.java.dto.QueryActorDto;
@@ -50,5 +53,16 @@ public class ActorController {
     @PostMapping("/queryActorByPage")
     public ReturnT<QueryActorVo> queryActorByPage(@RequestBody QueryActorDto queryActorDto) {
         return actorService.queryActorByPage(queryActorDto);
+    }
+
+
+    /**
+     * 分页插件，根据电影的id，查询演员列表
+     * curl --header "Content-Type: application/json" --request POST --data '{"filmId":508,"pageNum":1,"pageSize":10}' http://localhost:12345/actor/queryActorsByFilmId
+     * curl --header "Content-Type: application/json" --request POST --data '{"filmId":508,"pageNum":2,"pageSize":10}' http://localhost:12345/actor/queryActorsByFilmId
+     **/
+    @PostMapping("/queryActorsByFilmId")
+    public ReturnT<PageInfo<Film>> queryActorsByFilmId(@RequestBody QueryFilmDto queryFilmDto) {
+        return actorService.queryActorsByFilmId(queryFilmDto);
     }
 }
